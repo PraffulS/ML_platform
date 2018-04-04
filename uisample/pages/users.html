@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+   <a href="register.html" class="btn btn-primary btn-xs pull-right"><b>+</b> Add Users</a>
+    
+        <tr>
+            <th>Name</th>
+         
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+            <tr ng-repeat="x in myData">
+                <td>{{ x.name }}</td>
+                <td class="text-center">
+                <button class='btn btn-info btn-xs' ng-click="edit1(x._id.$oid)""><span class="glyphicon glyphicon-edit"></span> Edit</button> 
+                <button class="btn btn-danger btn-xs" ng-click="delete1(x._id.$oid)"><span class="glyphicon glyphicon-remove"></span> Delete</button>
+                </td>
+            </tr>
+    </table>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+<div id="myModal" style="position: fixed;" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="position: fixed;" role="dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">please map the columns of the dataset</h4>
+                </div>
+                <div class="modal-body" id="body1">
+                    
+                    <form name="form1">
+                    <div ng-repeat="x in colsname">
+                    <select>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                     <option value="mercedes">Mercedes</option>
+                     <option value="audi">Audi</option>
+                    </select>
+                    </div>
+                    
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Discard dataset</button>
+                    <button type="button" class="btn btn-primary" ng-click="uploadfile()">Map!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<div class="container">
+
+
+
+    
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+    <!--<a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add Datasets</a>-->
+    <b>Add datasets</b><input class="btn btn-primary btn-xs pull-right" type="file" accept=".xls,.xlsx,.csv" ng-model="file" name="file1" id="file1" on-read-file="showContent($fileContent)" />
+        <tr>
+            <th>User ID</th>
+            <th>File Name</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+            <tr ng-repeat="x in myData">
+                <td>{{ x.filepath }}</td>
+                <td>{{ x.filename }} <button class="btn btn-default btn-xs" data-toggle="collapse" ng-click="display_meta(x._id.$oid,x.filename)"" data-target="#menu1"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></button> </td>
+                <td class="text-center">
+                <button  class='btn btn-info btn-xs' ng-click="edit1(x._id.$oid)" href="index#demo" ><span class="glyphicon glyphicon-edit"></span> View </button>
+                <button class="btn btn-danger btn-xs" ng-click="delete1(x._id.$oid)"><span class="glyphicon glyphicon-remove"></span> Delete</button>
+                </td>   
+            </tr>
+
+            
+    </table>
+    <div id="menu1" class="collapse">
+    
+
+
+    <div class="row">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ name }}</h3>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Count</th>
+                        <th>Missing</th>
+                        <th>Statistics</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in myObj1">
+                        <td></td>
+                        <td>{{ x.type }}</td>
+                        <td>{{ x.count }}</td>
+                        <td>{{ x.missing }}</td>
+                        <td><i class="fa fa-info-circle" aria-hidden="true"></i>
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>
+    <div class="panel panel-primary">
+    <div id="cols" class="panel-body">
+    
+    </div>
+        
+    </div>
+   <div id="demo">
+                 <div ui-grid="gridOptions" class="myGrid"></div>
+                </div>
+    </div>
+    
+    
+    
+
+
+</div>
+
+
+
+
+<style type="text/css">
+.myGrid {
+width: 500px;
+height: 60%;
+}
+</style>
